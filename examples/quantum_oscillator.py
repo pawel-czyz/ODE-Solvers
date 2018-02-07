@@ -2,6 +2,8 @@ import sys
 sys.path.append(".")
 from solver.numerov import numerov_delta
 from solver.derivatives import numerov_taylor_series, derivative
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 def hermite_polynomial(n):
@@ -38,32 +40,41 @@ def hermite_polynomial(n):
         return lambda x: 2*x * hermite_polynomial(n - 1)(x) - 2 * (n - 1) * hermite_polynomial(n - 2)(x)
 
 
-def hermite_polynomial_normalised(n):
-    """Returns normalised Hermite polynomial of order `n`
+def solve_analytical_method(dx, x_max, n):
+    """Returns values of the harmonic oscillator with energy 2*`n`+1 evaluated at points `x`.
 
     Parameters
     ----------
+    dx : float
+        spacing in the interval [0, x_max)
     n : int
-        non-negative integer
+        non-negative integer, the order of the polynomial
+    x_max : float
+        right end of the interval [0, x_max) at which solution is evaluated
 
     Returns
     -------
-    func
-        normalised Hermite polynomial `f` of order `n`, that is f(0) = 1 or f(0) = 0 and f'(0) = 1.
-
-    Raises
-    ------
-    TypeError
-        if `n` is not int
-    ValueError
-        if `n` is negative
+    ndarray
+        x - values at which points are evaluated
+    ndarray
+        y(x) - values of the solution `y` evaluated at points in array `x`.
     """
     h = hermite_polynomial(n)
     normalisation_factor = round(h(0) if h(0) else derivative(h, 0))
-    return lambda x: h(x)/normalisation_factor
+
+    def hn(u):
+        return h(u)/normalisation_factor
+
+    x = np.arange(0, x_max, dx)
+    y = np.vectorize(hn)(x)
+    y *= np.exp(-x**2/2)
+    return x, y
 
 
-def solve_quantum_oscillator(dx, x_max, n, e):
+def solve_numerical_method(dx, x_max, n, e=None):
+    if e is None:
+        e = 2*n+1
+
     y0, dy0 = (n+1) % 2, n % 2
 
     def f(x):
@@ -71,12 +82,27 @@ def solve_quantum_oscillator(dx, x_max, n, e):
 
     y1 = numerov_taylor_series(f=f, y0=y0, dy0=dy0, dx=dx, x0=0)
 
-    print(numerov_delta(f=f, y0=y0, y1=y1, x_max=x_max, delta=dx))
+    y = numerov_delta(f=f, y0=y0, y1=y1, x_max=x_max, delta=dx)
+    x = np.arange(0, x_max, dx)
 
+    return x, y
+
+
+def demonstrate_e_dependency():
+    n = 0
+    for e in [0.95, 1, 1.05]:
+        x, y = solve_numerical_method(0.05, 5, n, e)
+        plt.plot(x, y, label="Numerical, energy {}".format(e))
+
+    xa, ya = solve_analytical_method(0.2, 5, n)
+    plt.plot(xa, ya, ".", label="Analytical")
+
+    plt.ylim(-1.1, 1.1)
+    plt.title("Numerical stability as a function of energy")
+    plt.xlabel(r"Position [a.u]")
+    plt.ylabel(r"Solution [a.u]")
+    plt.legend()
+    plt.show()
 
 if __name__ == "__main__":
-    for n in range(8):
-        h = hermite_polynomial_normalised(n)
-        print(n, h(3), derivative(h, 0))
-
-    # solve_quantum_oscillator(0.05, 5, 0, 1)
+    demonstrate_e_dependency()
