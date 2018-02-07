@@ -1,4 +1,8 @@
+"""Implementation of various versions of Numerov's method."""
+
 import numpy as np
+
+np.random.seed(12)
 
 
 def numerov(f, y0, y1, x):

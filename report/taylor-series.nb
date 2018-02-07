@@ -1,0 +1,169 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5160,        161]
+NotebookOptionsPosition[      4765,        143]
+NotebookOutlinePosition[      5104,        158]
+CellTagsIndexPosition[      5061,        155]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    SubscriptBox["\[Psi]", 
+     RowBox[{"\[Delta]", "\[IndentingNewLine]"}]], " ", "="}], "*)"}], " ", 
+  RowBox[{"u", ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"\[Psi]", "[", "0", "]"}], "+", 
+      RowBox[{"d\[Psi]", "*", "\[Delta]"}], " ", "+", " ", 
+      RowBox[{
+       FractionBox["1", "2"], "dd\[Psi]", "*", 
+       SuperscriptBox["\[Delta]", "2"]}], "+", 
+      RowBox[{
+       FractionBox["1", "6"], "ddd\[Psi]", "*", 
+       SuperscriptBox["\[Delta]", "3"]}], "+", 
+      RowBox[{
+       FractionBox["1", "24"], "dddd\[Psi]", "*", 
+       SuperscriptBox["\[Delta]", "4"]}]}], " ", "/.", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"dd\[Psi]", "\[Rule]", " ", 
+        RowBox[{
+         RowBox[{"\[Psi]", "[", "0", "]"}], "*", 
+         RowBox[{"f", "[", "0", "]"}]}]}], ",", " ", 
+       RowBox[{"ddd\[Psi]", "\[Rule]", " ", 
+        RowBox[{
+         RowBox[{"d\[Psi]", " ", "*", " ", 
+          RowBox[{"f", "[", "0", "]"}]}], "+", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "'"}], "[", "0", "]"}], "*", 
+          RowBox[{"\[Psi]", "[", "0", "]"}]}]}]}], ",", " ", 
+       RowBox[{"dddd\[Psi]", "\[Rule]", " ", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"f", "''"}], "[", "0", "]"}], " ", "*", " ", 
+          RowBox[{"\[Psi]", "[", "0", "]"}]}], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{
+           RowBox[{"f", "'"}], "[", "0", "]"}], "*", "d\[Psi]"}], "+", 
+         RowBox[{
+          SuperscriptBox[
+           RowBox[{"f", "[", "0", "]"}], "2"], "*", 
+          RowBox[{"\[Psi]", "[", "0", "]"}]}]}]}]}], "}"}]}], "/.", 
+    RowBox[{"{", 
+     RowBox[{"d\[Psi]", "\[Rule]", 
+      RowBox[{
+       RowBox[{"\[Psi]", "'"}], "[", "0", "]"}]}], "}"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.726980301909389*^9, 3.7269804827992687`*^9}, {
+  3.726980529671859*^9, 3.7269805644308863`*^9}, {3.726980613848151*^9, 
+  3.726980699228902*^9}, {3.726980827579756*^9, 3.72698083077633*^9}}],
+
+Cell[BoxData["u"], "Input",
+ CellChangeTimes->{{3.726980700838502*^9, 3.7269807427465563`*^9}, 
+   3.7269807977647047`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"\[Psi]", "[", "0", "]"}], "+", 
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    SuperscriptBox["\[Delta]", "2"], " ", 
+    RowBox[{"f", "[", "0", "]"}], " ", 
+    RowBox[{"\[Psi]", "[", "0", "]"}]}], "+", 
+   RowBox[{"\[Delta]", " ", 
+    RowBox[{
+     SuperscriptBox["\[Psi]", "\[Prime]",
+      MultilineFunction->None], "[", "0", "]"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "6"], " ", 
+    SuperscriptBox["\[Delta]", "3"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"\[Psi]", "[", "0", "]"}], " ", 
+       RowBox[{
+        SuperscriptBox["f", "\[Prime]",
+         MultilineFunction->None], "[", "0", "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"f", "[", "0", "]"}], " ", 
+       RowBox[{
+        SuperscriptBox["\[Psi]", "\[Prime]",
+         MultilineFunction->None], "[", "0", "]"}]}]}], ")"}]}], "+", 
+   RowBox[{
+    FractionBox["1", "24"], " ", 
+    SuperscriptBox["\[Delta]", "4"], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox[
+        RowBox[{"f", "[", "0", "]"}], "2"], " ", 
+       RowBox[{"\[Psi]", "[", "0", "]"}]}], "+", 
+      RowBox[{"2", " ", 
+       RowBox[{
+        SuperscriptBox["f", "\[Prime]",
+         MultilineFunction->None], "[", "0", "]"}], " ", 
+       RowBox[{
+        SuperscriptBox["\[Psi]", "\[Prime]",
+         MultilineFunction->None], "[", "0", "]"}]}], "+", 
+      RowBox[{
+       RowBox[{"\[Psi]", "[", "0", "]"}], " ", 
+       RowBox[{
+        SuperscriptBox["f", "\[Prime]\[Prime]",
+         MultilineFunction->None], "[", "0", "]"}]}]}], ")"}]}]}], "//", 
+  "TeXForm"}]], "Input",
+ CellChangeTimes->{{3.726981522044056*^9, 3.726981527670692*^9}}],
+
+Cell["\<\
+\\delta  \\psi '(0)+\\frac{1}{6} \\delta ^3 \\left(\\psi (0) f'(0)+f(0) \\psi
+   '(0)\\right)+\\frac{1}{24} \\delta ^4 \\left(\\psi (0) f''(0)+2 f'(0) \
+\\psi '(0)+f(0)^2
+   \\psi (0)\\right)+\\frac{1}{2} \\delta ^2 f(0) \\psi (0)+\\psi (0)\
+\>", "Output",
+ CellChangeTimes->{3.726981528124216*^9}]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{Automatic, 546}, {5, Automatic}},
+FrontEndVersion->"11.0 for Linux x86 (64-bit) (September 21, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2035, 54, 143, "Input"],
+Cell[2596, 76, 123, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[2744, 82, 1694, 50, 91, InheritFromParent],
+Cell[4441, 134, 308, 6, 77, "Output"]
+}, Open  ]]
+}
+]
+*)
+

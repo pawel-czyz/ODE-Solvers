@@ -1,5 +1,7 @@
 import numpy as np
 
+np.random.seed(12)
+
 
 def rk(f, y0, t):
     """Function solving first-order ODEs using Runge-Kutta method.

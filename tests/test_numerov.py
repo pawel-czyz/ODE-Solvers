@@ -3,6 +3,8 @@ import unittest
 import numpy as np
 from solver.numerov import numerov_delta
 
+np.random.seed(12)
+
 
 class TestHarmonicOscillator(unittest.TestCase):
     def test_oscillator_5(self):
