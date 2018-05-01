@@ -13,6 +13,9 @@ html:
 quantum:
 	python3 examples/quantum_oscillator.py
 
+lorentz:
+	python3 examples/lorentz.py
+
 clean:
 	rm *.pdf
 

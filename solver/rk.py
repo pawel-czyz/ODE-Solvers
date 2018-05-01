@@ -3,11 +3,15 @@ import numpy as np
 np.random.seed(12)
 
 
-def rk(f, y0, t):
+def ode_solve_rk(f, y0, t):
     """Function solving first-order ODEs using Runge-Kutta method.
 
     The ODE should have the form:
     y'(t) = f(y(t)), y(t0) = y0
+
+    Author
+    ------
+    Paweł Czyż, Date: 01/05/2018
 
     Parameters
     ----------

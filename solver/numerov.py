@@ -5,7 +5,7 @@ import numpy as np
 np.random.seed(12)
 
 
-def numerov(f, y0, y1, x):
+def ode_solve_numerov(f, y0, y1, x):
     """Function solving second order ODEs using Numerov's method.
 
     The ODE should have the form:
@@ -45,7 +45,7 @@ def numerov(f, y0, y1, x):
     return solution
 
 
-def numerov_delta(f, y0, y1, x_max, delta):
+def ode_solve_numerov_delta(f, y0, y1, x_max, delta):
     """Function solving second order ODEs using Numerov's method.
 
     The ODE should have the form:
@@ -80,4 +80,4 @@ def numerov_delta(f, y0, y1, x_max, delta):
     if len(x) < 2:
         raise ValueError("delta is too big compared to x_max.")
 
-    return numerov(f, y0, y1, x)
+    return ode_solve_numerov(f, y0, y1, x)

@@ -1,20 +1,23 @@
 import sys
 sys.path.append(".")
-from solver.rk import rk
+from solver.rk import ode_solve_rk
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import axes3d
 
 
 def lorentz_equations(a, b, r):
     """Function preparing function returning time derivative of yi.
 
+    Author
+    ------
+    Paweł Czyż, Date: 01/05/2018
+
     Parameters
     ----------
     a : float
-        Prandtl number
+        model constant
     b : float
-        Rayleigh number
+        model constant
     r : float
         model constant
 
@@ -41,9 +44,9 @@ def solve_lorentz(y0, a, b, r, t):
     y0 : ndarray
         ndarray with shape (3,) with initial value
     a : float
-        Prandtl number
+        model constant
     b : float
-        Rayleigh number
+        model constant
     r : float
         model constant
     t : ndarray
@@ -54,11 +57,11 @@ def solve_lorentz(y0, a, b, r, t):
     ndarray
         array with shape (n, 3) with yi(t)
     """
-    return rk(f=lorentz_equations(a, b, r), y0=y0, t=t)
+    return ode_solve_rk(f=lorentz_equations(a, b, r), y0=y0, t=t)
 
 
 def behaviour_changing_rayleigh_number():
-    """Example of the behaviour change for different values of Rayleigh number `r`"""
+    """Example of the behaviour change for different values of parameter `r`"""
 
     for i, r in enumerate([0.01, 1, 2, 3, 4]):
         t = np.arange(0, 12, 0.01)
@@ -95,13 +98,13 @@ def behaviour_changing_rayleigh_number():
 
 
 def weather_forecasting():
-    """Example of chaotic behaviour of Lorentz system."""
+    """Example of chaotic behaviour of the Lorentz system."""
     t = np.arange(0, 10, 0.01)
 
     # --- Weather forecasting phenomenon ---
     ideal_start = np.array([4, 5, 6])
 
-    peturbations = [0, 0.01, 0.1] # [0, 0.01, 0.05]
+    peturbations = [0, 0.01, 0.1]  # [0, 0.01, 0.05]
 
     plt.rc('text', usetex=True)
     plt.rc('font', family='serif')
@@ -110,14 +113,16 @@ def weather_forecasting():
         y0 = ideal_start + peturbation
 
         y = solve_lorentz(y0+peturbation, 10, 8/3, 28, t)[:, 0]
-
-        plt.plot(t, y, label="p: {}".format(peturbation))
+        plt.plot(t, y, label="{}".format(peturbation))
 
     plt.title("Weather forecasting")
-    plt.xlabel(r"Time [a.u]")
+    plt.xlabel(r"t [a.u]")
     plt.ylabel(r"y_0 [a.u]")
-    plt.legend()
-    plt.show()
+    plt.legend(title="Perturbation")
+    # plt.show()
+    plt.savefig("Weather_forecasting.pdf")
+    # Clear Matplotlib memory
+    plt.gcf().clear()
 
 if __name__ == "__main__":
     # behaviour_changing_rayleigh_number()

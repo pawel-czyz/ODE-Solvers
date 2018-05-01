@@ -1,6 +1,6 @@
 import sys
 sys.path.append(".")
-from solver import numerov, numerov_delta, numerov_taylor_series, derivative, gradient_descent
+from solver import ode_solve_numerov, ode_solve_numerov_delta, numerov_taylor_series, derivative, gradient_descent
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -81,7 +81,7 @@ def solve_numerical_method(dx, x_max, n, e=None):
 
     y1 = numerov_taylor_series(f=f, y0=y0, dy0=dy0, dx=dx, x0=0)
 
-    y = numerov_delta(f=f, y0=y0, y1=y1, x_max=x_max, delta=dx)
+    y = ode_solve_numerov_delta(f=f, y0=y0, y1=y1, x_max=x_max, delta=dx)
     x = np.arange(0, x_max, dx)
 
     return x, y
@@ -94,6 +94,10 @@ def demonstrate_e_dependency(n=0):
         plt.plot(x, y, label="Numerical, energy {}".format(e))
 
     xa, ya = solve_analytical_method(0.2, 5, n)
+
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+
     # Plot analytic solution
     plt.plot(xa, ya, ".", label="Analytical")
 
@@ -144,7 +148,7 @@ def solve_numerov(f, x, psi0, dpsi0):
     """
 
     psi1 = numerov_taylor_series(f=f, y0=psi0, dy0=dpsi0, dx=x[1]-x[0], x0=x[0])
-    psi = numerov(f=f, y0=psi0, y1=psi1, x=x)
+    psi = ode_solve_numerov(f=f, y0=psi0, y1=psi1, x=x)
     return psi
 
 
@@ -185,7 +189,7 @@ if __name__ == "__main__":
     # Producing plots
     print("Plots are being generated...")
     for n in [0, 1, 2, 3, 7]:
-        print("Generating an {}-quanta oscillator plot...".format(n))
+        print("Generating {}-quanta oscillator plot...".format(n))
         demonstrate_e_dependency(n)
     print("Finished plots.")
 

@@ -1,7 +1,7 @@
 """Tests Runge-Kutta equation solver"""
 import unittest
 import numpy as np
-from solver import rk
+from solver import ode_solve_rk
 
 
 class HarmonicOscillator(unittest.TestCase):
@@ -13,7 +13,7 @@ class HarmonicOscillator(unittest.TestCase):
         """Check harmonic motion. 20 time points"""
         t = np.linspace(0, 2*np.pi, 20)
 
-        solution = rk(self.f, np.array([1, 0]), t)
+        solution = ode_solve_rk(self.f, np.array([1, 0]), t)
 
         with self.subTest(coord="position"):
             self.assertTrue(np.allclose(solution[:, 0], np.cos(t), atol=0.005))
@@ -25,7 +25,7 @@ class HarmonicOscillator(unittest.TestCase):
         """Check harmonic motion. 20 time points"""
         t = np.linspace(0, 2*np.pi, 20)
 
-        solution = rk(self.f, np.array([0, 1]), t)
+        solution = ode_solve_rk(self.f, np.array([0, 1]), t)
 
         with self.subTest(coord="position"):
             self.assertTrue(np.allclose(solution[:, 0], np.sin(t), atol=0.005))
@@ -37,7 +37,7 @@ class HarmonicOscillator(unittest.TestCase):
         """There is no initial amplitude nor velocity"""
         t = np.linspace(0, 2*np.pi, 20)
 
-        solution = rk(self.f, np.array([0, 0]), t)
+        solution = ode_solve_rk(self.f, np.array([0, 0]), t)
         self.assertTrue(np.allclose(solution, 0))
 
 if __name__ == '__main__':
