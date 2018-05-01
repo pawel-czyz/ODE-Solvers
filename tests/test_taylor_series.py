@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from solver.derivatives import numerov_taylor_series
+from solver import numerov_taylor_series
 
 np.random.seed(12)
 

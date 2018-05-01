@@ -120,5 +120,5 @@ def weather_forecasting():
     plt.show()
 
 if __name__ == "__main__":
-    behaviour_changing_rayleigh_number()
-    # weather_forecasting()
+    # behaviour_changing_rayleigh_number()
+    weather_forecasting()

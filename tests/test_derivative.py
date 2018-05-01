@@ -1,6 +1,6 @@
 """Test derivative function"""
 import unittest
-from solver.derivatives import derivative
+from solver import derivative
 
 
 class TestSquare(unittest.TestCase):

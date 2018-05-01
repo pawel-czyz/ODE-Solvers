@@ -1,7 +1,7 @@
 """Tests Numerov equation solver"""
 import unittest
 import numpy as np
-from solver.numerov import numerov_delta
+from solver import numerov_delta
 
 np.random.seed(12)
 

@@ -1,7 +1,7 @@
 """Tests Runge-Kutta equation solver"""
 import unittest
 import numpy as np
-from solver.rk import rk
+from solver import rk
 
 
 class HarmonicOscillator(unittest.TestCase):
