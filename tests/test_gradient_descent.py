@@ -16,12 +16,6 @@ class TestSquare(unittest.TestCase):
         with self.subTest("Value"):
             self.assertEqual(vm, self.loss(xm))
 
-    def test_n_steps_influence(self):
-        """Tests whether bigger step number results in better accuracy."""
-        x10, _ = gradient_descent(self.loss, 0.2, n_steps=10)
-        x20, _ = gradient_descent(self.loss, 0.2, n_steps=20)
-        self.assertLess(abs(x20), abs(x10))
-
     def test_far_away(self):
         """Start from value lying very far from the global maximum."""
         xm, _ = gradient_descent(self.loss, 200, n_steps=40)

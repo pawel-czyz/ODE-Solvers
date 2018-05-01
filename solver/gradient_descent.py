@@ -1,7 +1,18 @@
 from .derivatives import derivative
 
+DELTA_MINIMAL = 1e-2
+DELTA_END = 1e-5
 
-def gradient_descent(loss, x0=0, step=0.1, n_steps=10):
+
+def _sign(x):
+    if x < 0:
+        return -1
+    elif x > 0:
+        return 1
+    return 0
+
+
+def gradient_descent(loss, x0=0, step=0.1, n_steps=10, dx=1e-2):
     """Calculates derivative of `f` of order `order` and evaluates it at point `x`
 
     Parameters
@@ -22,8 +33,19 @@ def gradient_descent(loss, x0=0, step=0.1, n_steps=10):
     float
         loss value at that point
     """
+
     for _ in range(n_steps):
-        grad = derivative(loss, x=x0, order=1, dx=1e-2)
-        x0 -= grad * step
+        grad = (loss(x0 + dx) - loss(x0)) / dx
+
+        delta = - grad * step
+
+        # If step is changes nothing, we can stop the iteration process
+        if abs(delta) < DELTA_END:
+            break
+        # If step should change something, but the convergence would be too slow, we artificially inscrease it
+        if abs(delta) < DELTA_MINIMAL:
+            delta = _sign(delta) * DELTA_MINIMAL
+        # Make step
+        x0 += delta
 
     return x0, loss(x0)
