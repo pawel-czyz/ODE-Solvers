@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>solver package &mdash; Solver 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Solver 1.0 documentation" href="../index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Solver
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Solver</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Solver</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>solver package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/source/solver.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="solver-package">
+<h1>solver package<a class="headerlink" href="#solver-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-solver.derivatives">
+<span id="solver-derivatives-module"></span><h2>solver.derivatives module<a class="headerlink" href="#module-solver.derivatives" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="solver.derivatives.derivative">
+<code class="descclassname">solver.derivatives.</code><code class="descname">derivative</code><span class="sig-paren">(</span><em>f</em>, <em>x</em>, <em>order=1</em>, <em>dx=0.001</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/derivatives.html#derivative"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.derivatives.derivative" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates derivative of <cite>f</cite> of order <cite>order</cite> and evaluates it at point <cite>x</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>func</em>) – a function that takes float and returns float</li>
+<li><strong>x</strong> (<em>float</em>) – point at which the derivative should be evaluated</li>
+<li><strong>order</strong> (<em>0</em><em>, </em><em>1</em><em>, </em><em>2</em>) – order of the derivative</li>
+<li><strong>dx</strong> (<em>float</em>) – difference used in calculation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">derivative of the function <cite>f</cite> evaluated at <cite>x</cite></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="solver.derivatives.numerov_taylor_series">
+<code class="descclassname">solver.derivatives.</code><code class="descname">numerov_taylor_series</code><span class="sig-paren">(</span><em>f</em>, <em>y0</em>, <em>dy0</em>, <em>dx=0.001</em>, <em>x0=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/derivatives.html#numerov_taylor_series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.derivatives.numerov_taylor_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses Taylor series to approximate value:</p>
+<p>y(x0 + dx) = y(x0) + y’(x0) * dx + …</p>
+<p>assuming y is the solution of the equation of the form:</p>
+<p>y”(x) = f(x) * y(x)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>func</em>) – a function that takes float and returns float</li>
+<li><strong>y0</strong> (<em>float</em>) – value of y(x0)</li>
+<li><strong>dy0</strong> (<em>float</em>) – value of y’(x0)</li>
+<li><strong>dx</strong> (<em>float</em>) – step size</li>
+<li><strong>x0</strong> (<em>float</em>) – starting point at which values of y and y’ are known</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">value of y(x0+dx)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.gradient_descent">
+<span id="solver-gradient-descent-module"></span><h2>solver.gradient_descent module<a class="headerlink" href="#module-solver.gradient_descent" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="solver.gradient_descent.gradient_descent">
+<code class="descclassname">solver.gradient_descent.</code><code class="descname">gradient_descent</code><span class="sig-paren">(</span><em>loss</em>, <em>x0=0</em>, <em>step=0.1</em>, <em>n_steps=10</em>, <em>dx=0.01</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/gradient_descent.html#gradient_descent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.gradient_descent.gradient_descent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates derivative of <cite>f</cite> of order <cite>order</cite> and evaluates it at point <cite>x</cite></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>loss</strong> (<em>func</em>) – a function that takes float and returns float. Measures error that should be minimised</li>
+<li><strong>x0</strong> (<em>float</em>) – point at which neighborhood we expect a minimum</li>
+<li><strong>step</strong> (<em>float</em>) – measure of step size. Scales gradient value</li>
+<li><strong>n_steps</strong> (<em>int</em>) – how many steps should be performed</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
+<li><em>float</em> – point representing an approximation of a local minimum in neighborhood of x0</li>
+<li><em>float</em> – loss value at that point</li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.numerov">
+<span id="solver-numerov-module"></span><h2>solver.numerov module<a class="headerlink" href="#module-solver.numerov" title="Permalink to this headline">¶</a></h2>
+<p>Implementation of various versions of Numerov’s method.</p>
+<dl class="function">
+<dt id="solver.numerov.ode_solve_numerov">
+<code class="descclassname">solver.numerov.</code><code class="descname">ode_solve_numerov</code><span class="sig-paren">(</span><em>f</em>, <em>y0</em>, <em>y1</em>, <em>x</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/numerov.html#ode_solve_numerov"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.numerov.ode_solve_numerov" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function solving second order ODEs using Numerov’s method.</p>
+<p>The ODE should have the form:
+y”(x) = f(x) * y(x), y(x0) = y0, y(x1) = y1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>func</em>) – function that takes float and returns float being the value of f at this point</li>
+<li><strong>y0</strong> (<em>float</em>) – value of y at x[0]</li>
+<li><strong>y1</strong> (<em>float</em>) – value of y at x[1]</li>
+<li><strong>x</strong> (<em>ndarray</em>) – array (n,) where n is greater or equal 2. Should have the position values at which y should be calculated.
+The points should be distributed uniformly (between any two in a row, the distance should be the same).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array (n,) where n is the length of x array, storing the values y(x)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="solver.numerov.ode_solve_numerov_delta">
+<code class="descclassname">solver.numerov.</code><code class="descname">ode_solve_numerov_delta</code><span class="sig-paren">(</span><em>f</em>, <em>y0</em>, <em>y1</em>, <em>x_max</em>, <em>delta</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/numerov.html#ode_solve_numerov_delta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.numerov.ode_solve_numerov_delta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function solving second order ODEs using Numerov’s method.</p>
+<p>The ODE should have the form:
+y”(x) = f(x) * y(x), y(x0) = y0, y(x1) = y1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>func</em>) – function that takes float and returns float being the value of f at this point</li>
+<li><strong>y0</strong> (<em>float</em>) – value of y at x[0]</li>
+<li><strong>y1</strong> (<em>float</em>) – value of y at x[1]</li>
+<li><strong>x_max</strong> (<em>float</em>) – the interval will be [0, x_max)</li>
+<li><strong>delta</strong> (<em>float</em>) – spacing in the interval</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array (n,) storing the values y(x), where x is the interval [0, x_max) spaced by delta</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">ndarray</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – if delta/x_max is too large and the interval does not have enough points</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver.rk">
+<span id="solver-rk-module"></span><h2>solver.rk module<a class="headerlink" href="#module-solver.rk" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="solver.rk.ode_solve_rk">
+<code class="descclassname">solver.rk.</code><code class="descname">ode_solve_rk</code><span class="sig-paren">(</span><em>f</em>, <em>y0</em>, <em>t</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/solver/rk.html#ode_solve_rk"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#solver.rk.ode_solve_rk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function solving first-order ODEs using Runge-Kutta method.</p>
+<p>The ODE should have the form:
+y’(t) = f(y(t)), y(t0) = y0</p>
+<p>Paweł Czyż, Date: 01/05/2018</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>f</strong> (<em>func</em>) – function that takes numpy array (k,) of coordinates and returns their derivatives as another array (k,)</li>
+<li><strong>y0</strong> (<em>ndarray</em>) – ndarray (k,)</li>
+<li><strong>t</strong> (<em>ndarray</em>) – ndarray of shape (n,) with time points at which we want the value of function <cite>y</cite></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array with shape (n, k) with solution</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-solver">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-solver" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Paweł Czyż.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

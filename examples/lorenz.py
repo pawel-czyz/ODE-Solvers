@@ -118,7 +118,7 @@ def weather_forecasting():
 
 if __name__ == "__main__":
     for r in [1, 10, 28, 100]:
-        print("Generating plot for r={}".format(r))
+        print("Generating plot for r={}...".format(r))
         generate_plots(r)
     print("Weather forecasting...")
     weather_forecasting()
