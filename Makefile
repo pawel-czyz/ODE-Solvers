@@ -10,4 +10,10 @@ coverage:
 html:
 	coverage run --source=solver -m unittest discover -s tests; coverage html; python -m webbrowser "./htmlcov/index.html" &
 
+quantum:
+	python3 examples/quantum_oscillator.py
+
+clean:
+	rm *.pdf
+
 .PHONY: test

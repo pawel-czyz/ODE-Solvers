@@ -1,13 +1,32 @@
+======
 Solver
-=======
+======
 
-Various ODE solvers implemented by Paweł Czyż, as a part of Part A Computing at the University of Oxford. Provided package was developed according to the following paradigms:
+A package for solving some computational physics problems. Implements:
 
+ - Numerov ODE Solver
+ - Runge-Kutta ODE Solver
+ - 1D gradient descent optimisation
+ - method for numerical derivatives calculation
 
-Content
-=======
+Contains also various unit tests and examples, including:
 
+ - 1D harmonic oscillator, solution in position basis
+ - Lorentz attractor
 
-Contributors
-============
-The whole package was developed by Paweł Czyż from University of Oxford.
+Website: https://github.com/pawel-czyz/ODE-Solvers
+
+Usage
+-----
+
+To run unit tests:
+
+.. code:: bash
+
+    $ make test
+
+To run a harmonic oscillator example:
+
+.. code:: bash
+
+    $ make quantum
