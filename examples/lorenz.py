@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def lorentz_equations(a, b, r):
+def lorenz_equations(a, b, r):
     """Function preparing function returning time derivative of yi.
 
     Author
@@ -36,8 +36,8 @@ def lorentz_equations(a, b, r):
     return f
 
 
-def solve_lorentz(y0, a, b, r, t):
-    """Solve Lorentz equations
+def solve_lorenz(y0, a, b, r, t):
+    """Solve Lorenz equations
 
     Parameters
     ----------
@@ -57,62 +57,54 @@ def solve_lorentz(y0, a, b, r, t):
     ndarray
         array with shape (n, 3) with yi(t)
     """
-    return ode_solve_rk(f=lorentz_equations(a, b, r), y0=y0, t=t)
+    return ode_solve_rk(f=lorenz_equations(a, b, r), y0=y0, t=t)
 
 
-def behaviour_changing_rayleigh_number():
-    """Example of the behaviour change for different values of parameter `r`"""
+def generate_plots(r, y0=(4, 5, 6), a=10, b=8/3, t=20):
+    t_a = np.arange(0, t, 0.01)
+    y = solve_lorenz(y0, a, b, r, t_a)
 
-    for i, r in enumerate([0.01, 1, 2, 3, 4]):
-        t = np.arange(0, 12, 0.01)
-        y = solve_lorentz(np.array([4, 5, 6]), 10, 8/3, r, t)
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
-        ax0 = plt.subplot2grid((5, 4), (i, 0))
-        ax0.plot(y[:, 0], y[:, 1])
+    plt.axes().set_aspect('equal', 'datalim')
+    f, axs = plt.subplots(1, 3)
+    axs[0].plot(t_a, y[:, 0])
+    axs[0].set_title(r"$y_0$ versus time")
+    axs[1].plot(t_a, y[:, 1])
+    axs[1].set_title(r"$y_1$ versus time")
+    axs[2].plot(t_a, y[:, 2])
+    axs[2].set_title("$y_2$ versus time")
+    plt.savefig("ys_vs_time-r_{}.pdf".format(r))
+    plt.gcf().clear()
 
-        ax1 = plt.subplot2grid((5, 4), (i, 1))
-        ax1.plot(y[:, 0], y[:, 2])
-
-        ax2 = plt.subplot2grid((5, 4), (i, 2))
-        ax2.plot(y[:, 1], y[:, 2])
-
-        ax3 = plt.subplot2grid((5, 4), (i, 3))
-        ax3.plot(t, y[:, 0])
-
-    plt.axis('off')
-
-    plt.show()
-    #
-    #     if i % 4 == 0:
-    #         axs[i].plot(y[:, 0], y[:, 1])
-    #     elif i % 4 == 1:
-    #         axs[i].plot(y[:, 1], y[:, 2])
-    #     elif i % 4 == 2:
-    #         axs[i].plot(y[:, 2], y[:, 0])
-    #     else:
-    #         axs[i].plot(t, y[:, 0])
-    #
-    #     axs[i].set_title("r={}".format(r))
-    #
+    plt.plot(y[:, 1], y[:, 2])
+    plt.xlabel(r"$y_1$")
+    plt.ylabel(r"$y_2$")
+    plt.savefig("y1_vs_y2-r_{}.pdf".format(r))
+    plt.gcf().clear()
+    #axs[1, 1].set_title('Phase diagram y_1 versus y_2')
+    # Fine-tune figure; hide x ticks for top plots and y ticks for right plots
+    # plt.setp([a.get_xticklabels() for a in axarr[0, :]], visible=False)
+    #plt.setp([a.get_yticklabels() for a in axarr[:, 1]], visible=False)
     # plt.show()
 
 
 def weather_forecasting():
-    """Example of chaotic behaviour of the Lorentz system."""
+    """Example of chaotic behaviour of the Lorenz system."""
     t = np.arange(0, 10, 0.01)
+
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
 
     # --- Weather forecasting phenomenon ---
     ideal_start = np.array([4, 5, 6])
 
     peturbations = [0, 0.01, 0.1]  # [0, 0.01, 0.05]
-
-    plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
-
     for peturbation in peturbations:
         y0 = ideal_start + peturbation
 
-        y = solve_lorentz(y0+peturbation, 10, 8/3, 28, t)[:, 0]
+        y = solve_lorenz(y0 + peturbation, 10, 8 / 3, 28, t)[:, 0]
         plt.plot(t, y, label="{}".format(peturbation))
 
     plt.title("Weather forecasting")
@@ -125,5 +117,9 @@ def weather_forecasting():
     plt.gcf().clear()
 
 if __name__ == "__main__":
-    # behaviour_changing_rayleigh_number()
+    for r in [1, 10, 28, 100]:
+        print("Generating plot for r={}".format(r))
+        generate_plots(r)
+    print("Weather forecasting...")
     weather_forecasting()
+    print("Done.")
