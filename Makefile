@@ -19,4 +19,7 @@ lorenz:
 clean:
 	rm *.pdf
 
+install:
+	pip install -r requirements.txt
+
 .PHONY: test

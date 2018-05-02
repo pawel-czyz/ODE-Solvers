@@ -1,0 +1,13 @@
+private/
+
+*.aux
+*.log
+*.bbl
+*.synctex.gz
+*.ilg
+*.ind
+*.idx
+*.fdb_latexmk
+*.fls
+*.toc
+*.bak

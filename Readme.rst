@@ -2,7 +2,7 @@
 Solver
 ======
 
-A package for solving some computational physics problems. Implements:
+A Python 3 package for solving computational physics problems. Implements:
 
  - Numerov ODE Solver
  - Runge-Kutta ODE Solver
@@ -18,6 +18,12 @@ Website: https://github.com/pawel-czyz/ODE-Solvers
 
 Usage
 -----
+
+To install dependencies (Matplotlib and NumPy):
+
+.. code:: bash
+
+	$ make install
 
 To run a harmonic oscillator example:
 
@@ -36,3 +42,4 @@ To run unit tests:
 .. code:: bash
 
     $ make test
+
