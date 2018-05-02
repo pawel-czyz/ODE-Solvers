@@ -10,3 +10,4 @@ private/
 *.fdb_latexmk
 *.fls
 *.toc
+*.bak

@@ -19,14 +19,20 @@ Website: https://github.com/pawel-czyz/ODE-Solvers
 Usage
 -----
 
-To run unit tests:
-
-.. code:: bash
-
-    $ make test
-
 To run a harmonic oscillator example:
 
 .. code:: bash
 
     $ make quantum
+
+To run a Lorenz system simulation example:
+
+.. code:: bash
+
+	$ make lorenz
+
+To run unit tests:
+
+.. code:: bash
+
+    $ make test
